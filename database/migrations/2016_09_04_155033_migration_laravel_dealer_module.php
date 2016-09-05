@@ -42,7 +42,7 @@ class MigrationLaravelDealerModule extends Migration
         if ( ! Schema::hasTable('dealers')) {
             Schema::create('dealers', function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('category_id')->unsigned();
+                $table->integer('category_id')->unsigned()->nullable();
                 $table->foreign('category_id')->references('id')->on('dealer_categories')->onDelete('cascade');
 
                 $table->string('name');
