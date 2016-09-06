@@ -31,7 +31,7 @@ class DealerCategory extends Node
         'show_postal_code',
         'show_land_phone',
         'show_mobile_phone',
-        'show_web',
+        'show_url',
     ];
 
 

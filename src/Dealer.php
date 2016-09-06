@@ -34,7 +34,7 @@ class Dealer extends Model
         'postal_code_id',
         'land_phone',
         'mobile_phone',
-        'web',
+        'url',
         'is_publish'
     ];
 
@@ -98,7 +98,7 @@ class Dealer extends Model
     /**
      * Get the category of the dealer.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {

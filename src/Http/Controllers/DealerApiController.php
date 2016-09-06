@@ -67,18 +67,11 @@ class DealerApiController extends BaseController
     {
         // query
         if (is_null($id)) {
-            $dealers = Dealer::with('categories','video','photo');
+            $dealers = Dealer::with('category');
         } else {
-            $category = DealerCategory::findOrFail($id);
-            $dealers = $category->dealers()->with([
-                'categories' => function($q) use($id)
-                {
-                    $q->where('id', '!=', $id);
-                },
-                $category->type
-            ]);
+            $dealers = DealerCategory::findOrFail($id)->dealers();
         }
-        $dealers->select(['dealers.id','dealers.title','dealers.description','dealers.is_publish','dealers.created_at']);
+        $dealers->select(['id', 'category_id', 'name', 'is_publish', 'created_at']);
 
         // if is filter action
         if ($request->has('action') && $request->input('action') === 'filter') {
@@ -96,22 +89,12 @@ class DealerApiController extends BaseController
         }
         $addColumns = [
             'addUrls'           => $addUrls,
-            'status'            => function($model) { return $model->is_publish; },
-            'dealer'             => function($model)
-            {
-                if ( ! is_null($model->video) ) {
-                    return $model->video->html;
-                }
-                if ( ! is_null($model->photo) ) {
-                    return $model->photo->html;
-                }
-                return '';
-            }
+            'status'            => function($model) { return $model->is_publish; }
         ];
         $editColumns = [
             'created_at'        => function($model) { return $model->created_at_table; }
         ];
-        $removeColumns = ['is_publish','photo','video'];
+        $removeColumns = ['is_publish'];
         return $this->getDatatables($dealers, $addColumns, $editColumns, $removeColumns);
     }
 
@@ -178,15 +161,10 @@ class DealerApiController extends BaseController
      */
     public function store(ApiStoreRequest $request)
     {
-        $this->setToFileOptions($request, ['photo.photo' => 'photo']);
         $this->setEvents([
             'success'   => StoreSuccess::class,
             'fail'      => StoreFail::class
         ]);
-        if ($request->has('video')) {
-            $this->relations['video']['datas']['video'] = $request->video;
-            $this->setOperationRelation($this->relations);
-        }
         return $this->storeModel(Dealer::class);
     }
 

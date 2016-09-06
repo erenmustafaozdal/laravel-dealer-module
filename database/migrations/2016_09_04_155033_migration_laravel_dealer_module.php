@@ -30,7 +30,7 @@ class MigrationLaravelDealerModule extends Migration
                 $table->boolean('show_postal_code')->default(1);
                 $table->boolean('show_land_phone')->default(1);
                 $table->boolean('show_mobile_phone')->default(1);
-                $table->boolean('show_web')->default(1);
+                $table->boolean('show_url')->default(1);
 
                 $table->string('name');
                 $table->timestamps();
@@ -61,7 +61,7 @@ class MigrationLaravelDealerModule extends Migration
 
                 $table->char('land_phone', 16)->nullable(); // ETC: 0(216) 333 33 33
                 $table->char('mobile_phone', 16)->nullable(); // ETC: 0(506) 333 33 33
-                $table->string('web')->nullable();
+                $table->string('url')->nullable();
 
                 $table->boolean('is_publish')->default(0);
                 $table->timestamps();
