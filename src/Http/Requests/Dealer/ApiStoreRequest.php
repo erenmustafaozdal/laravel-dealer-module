@@ -32,12 +32,9 @@ class ApiStoreRequest extends Request
             'address'           => 'max:255',
             'province_id'       => 'required|integer|exists:provinces,id',
             'county_id'         => 'required|integer|exists:counties,id',
-            'district_id'       => 'required|integer|exists:districts,id',
-            'neighborhood_id'   => 'required|integer|exists:neighborhoods,id',
-            'postal_code_id'    => 'required|integer|exists:postal_codes,id',
-            'land_phone'        => 'required|max:16|unique:dealers,land_phone',
-            'mobile_phone'      => 'required|max:16|unique:dealers,land_phone',
-            'web'               => 'max:255|active_url'
+            'district_id'       => 'integer|exists:districts,id',
+            'neighborhood_id'   => 'integer|exists:neighborhoods,id',
+            'postal_code_id'    => 'integer|exists:postal_codes,id'
         ];
     }
 }

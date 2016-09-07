@@ -52,11 +52,11 @@ class MigrationLaravelDealerModule extends Migration
                 $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
                 $table->integer('county_id')->unsigned();
                 $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
-                $table->integer('district_id')->unsigned();
+                $table->integer('district_id')->unsigned()->nullable();
                 $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
-                $table->integer('neighborhood_id')->unsigned();
+                $table->integer('neighborhood_id')->unsigned()->nullable();
                 $table->foreign('neighborhood_id')->references('id')->on('neighborhoods')->onDelete('cascade');
-                $table->integer('postal_code_id')->unsigned();
+                $table->integer('postal_code_id')->unsigned()->nullable();
                 $table->foreign('postal_code_id')->references('id')->on('postal_codes')->onDelete('cascade');
 
                 $table->char('land_phone', 16)->nullable(); // ETC: 0(216) 333 33 33

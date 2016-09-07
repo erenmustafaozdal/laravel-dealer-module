@@ -25,6 +25,7 @@ class Dealer extends Model
      * @var array
      */
     protected $fillable = [
+        'category_id',
         'name',
         'address',
         'province_id',
@@ -105,6 +106,56 @@ class Dealer extends Model
         return $this->belongsTo('App\DealerCategory');
     }
 
+    /**
+     * Get the province of the dealer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function province()
+    {
+        return $this->belongsTo('App\Province');
+    }
+
+    /**
+     * Get the county of the dealer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function county()
+    {
+        return $this->belongsTo('App\County');
+    }
+
+    /**
+     * Get the district of the dealer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function district()
+    {
+        return $this->belongsTo('App\District');
+    }
+
+    /**
+     * Get the neighborhood of the dealer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function neighborhood()
+    {
+        return $this->belongsTo('App\Neighborhood');
+    }
+
+    /**
+     * Get the postal code of the dealer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function postalCode()
+    {
+        return $this->belongsTo('App\PostalCode');
+    }
+
 
 
 
@@ -115,48 +166,78 @@ class Dealer extends Model
     |--------------------------------------------------------------------------
     */
 
-
-
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Model Events
-    |--------------------------------------------------------------------------
-    */
+    /**
+     * Set category id
+     *
+     * @param $category_id
+     */
+    public function setCategoryIdAttribute($category_id)
+    {
+        $this->attributes['category_id'] =  $category_id == '' ? null : $category_id;
+    }
 
     /**
-     * model boot method
+     * Set district id
+     *
+     * @param $district_id
      */
-    protected static function boot()
+    public function setDistrictIdAttribute($district_id)
     {
-        parent::boot();
+        $this->attributes['district_id'] =  $district_id == '' ? null : $district_id;
+    }
 
-        /**
-         * model saved method
-         *
-         * @param $model
-         */
-        parent::saved(function($model)
-        {
-            if (Request::has('category_id')) {
-                $refferer = explode('/', removeDomain(Request::server('HTTP_REFERER')));
-                $ids = is_array(Request::get('category_id')) && Request::get('category_id')[0] != '0'
-                    ? Request::get('category_id')
-                    : (
-                        is_string(Request::get('category_id'))
-                            ? explode(',',Request::get('category_id'))
-                            : []
-                    );
-                if ( $refferer[1] === config('laravel-dealer-module.url.dealer_category') ) {
-                    $ids[] = $refferer[2];
-                    if ( ! is_null($model->categories->first()) && ! in_array($model->categories->first()->id,$ids) ) {
-                        $ids[] = $model->categories->first()->id;
-                    }
-                }
-                $model->categories()->sync( $ids );
-            }
+    /**
+     * Set neighborhood id
+     *
+     * @param $neighborhood_id
+     */
+    public function setNeighborhoodIdAttribute($neighborhood_id)
+    {
+        $this->attributes['neighborhood_id'] =  $neighborhood_id == '' ? null : $neighborhood_id;
+    }
 
-        });
+    /**
+     * Set postal code id
+     *
+     * @param $postal_code_id
+     */
+    public function setPostalCodeIdAttribute($postal_code_id)
+    {
+        $this->attributes['postal_code_id'] =  $postal_code_id == '' ? null : $postal_code_id;
+    }
+
+    /**
+     * get full address
+     *
+     * @return string
+     */
+    public function getFullAddressAttribute()
+    {
+        $address = '';
+        // mahalle
+        if ($this->neighborhood) {
+            $address .= ' ' . $this->neighborhood->neighborhood;
+        }
+        // adres
+        if ($this->address) {
+            $address .= ' ' . $this->address;
+        }
+        // semt
+        if ($this->district) {
+            $address .= ' ' . $this->district->district;
+        }
+        // il ve ilçe
+        if ($this->province && $this->county) {
+            $address .= " {$this->county->county}/{$this->province->province}";
+        } else if($this->province) {
+            $address .= ' ' . $this->province->province;
+        } else if($this->county) {
+            $address .= ' ' . $this->county->county;
+        }
+        // posta kodu
+        if ($this->postalCode) {
+            $address .= ' ' . $this->postalCode->postal_code;
+        }
+        return $address;
     }
 }

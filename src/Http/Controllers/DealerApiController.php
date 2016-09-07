@@ -107,31 +107,17 @@ class DealerApiController extends BaseController
      */
     public function detail($id, Request $request)
     {
-        $dealer = Dealer::with([
-            'categories' => function($query) use($request)
-            {
-                $refferer = explode('/', removeDomain($request->server('HTTP_REFERER')));
-                $id = $refferer[1] === config('laravel-dealer-module.url.dealer_category') ? $refferer[2] : null;
-                return $query->select(['id','name'])->where('id', '!=', $id);
-            },
-            'video' => function($query)
-            {
-                return $query->select(['id','dealer_id','video']);
-            },
-            'photo' => function($query)
-            {
-                return $query->select(['id','dealer_id','photo']);
-            }
-        ])->where('id',$id)->select(['id','title','description','created_at','updated_at']);
+        $dealer = Dealer::with(['category', 'province', 'county', 'district', 'neighborhood', 'postalCode'])
+            ->where('id',$id)
+            ->select(['id','category_id','name','province_id','county_id','district_id','neighborhood_id','postal_code_id','address','land_phone','mobile_phone','url','created_at','updated_at']);
 
         $editColumns = [
-            'size'          => function($model) { return $model->size_table; },
             'created_at'    => function($model) { return $model->created_at_table; },
             'updated_at'    => function($model) { return $model->updated_at_table; },
-            'photo.photo'   => function($model) { return !is_null($model->photo) ? $model->photo->url : ''; },
-            'video.video'   => function($model) { return !is_null($model->video) ? $model->video->embed_url : ''; },
+            'address'       => function($model) { return $model->full_address; },
         ];
-        return $this->getDatatables($dealer, [], $editColumns, []);
+        $removeColumns = ['province_id','province','county_id','county','district_id','district','neighborhood_id','neighborhood','postal_code_id','postal_code'];
+        return $this->getDatatables($dealer, [], $editColumns, $removeColumns);
     }
 
     /**
@@ -143,14 +129,9 @@ class DealerApiController extends BaseController
      */
     public function fastEdit($id, Request $request)
     {
-        return Dealer::with([
-            'categories' => function($query) use($request)
-            {
-                $refferer = explode('/', removeDomain($request->server('HTTP_REFERER')));
-                $id = $refferer[1] === config('laravel-dealer-module.url.dealer_category') ? $refferer[2] : null;
-                return $query->select(['id','name'])->where('id', '!=', $id);
-            }
-        ])->where('id',$id)->first(['id','title','description','is_publish']);
+        return Dealer::with(['category','province','county','district','neighborhood','postalCode'])
+            ->where('id',$id)
+            ->first(['id','category_id','name','province_id','county_id','district_id','neighborhood_id','postal_code_id']);
     }
 
     /**
