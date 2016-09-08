@@ -173,7 +173,7 @@ class Dealer extends Model
      */
     public function setCategoryIdAttribute($category_id)
     {
-        $this->attributes['category_id'] =  $category_id == '' ? null : $category_id;
+        $this->attributes['category_id'] =  $category_id == '' || $category_id == 0 ? null : $category_id;
     }
 
     /**
@@ -183,7 +183,7 @@ class Dealer extends Model
      */
     public function setDistrictIdAttribute($district_id)
     {
-        $this->attributes['district_id'] =  $district_id == '' ? null : $district_id;
+        $this->attributes['district_id'] =  $district_id == '' || $district_id == 0 ? null : $district_id;
     }
 
     /**
@@ -193,7 +193,7 @@ class Dealer extends Model
      */
     public function setNeighborhoodIdAttribute($neighborhood_id)
     {
-        $this->attributes['neighborhood_id'] =  $neighborhood_id == '' ? null : $neighborhood_id;
+        $this->attributes['neighborhood_id'] =  $neighborhood_id == '' || $neighborhood_id == 0 ? null : $neighborhood_id;
     }
 
     /**
@@ -203,7 +203,7 @@ class Dealer extends Model
      */
     public function setPostalCodeIdAttribute($postal_code_id)
     {
-        $this->attributes['postal_code_id'] =  $postal_code_id == '' ? null : $postal_code_id;
+        $this->attributes['postal_code_id'] =  $postal_code_id == '' || $postal_code_id == 0 ? null : $postal_code_id;
     }
 
     /**
