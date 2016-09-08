@@ -125,7 +125,7 @@ class DealerApiController extends BaseController
      *
      * @param integer $id
      * @param Request $request
-     * @return Datatables
+     * @return Dealer
      */
     public function fastEdit($id, Request $request)
     {
