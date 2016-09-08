@@ -224,7 +224,9 @@ class Dealer extends Model
         }
         // semt
         if ($this->district) {
-            $address .= ' ' . $this->district->district;
+            $address .= $this->county && $this->county->county === $this->district->district
+                ? ''
+                : ' ' . $this->district->district;
         }
         // il ve ilçe
         if ($this->province && $this->county) {
