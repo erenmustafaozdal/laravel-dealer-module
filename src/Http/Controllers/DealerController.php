@@ -73,15 +73,10 @@ class DealerController extends BaseController
             $this->setRelationRouteParam($id, config('laravel-dealer-module.url.dealer'));
         }
 
-        $this->setToFileOptions($request, ['photo.photo' => 'photo']);
         $this->setEvents([
             'success'   => StoreSuccess::class,
             'fail'      => StoreFail::class
         ]);
-        if ($request->has('video')) {
-            $this->relations['video']['datas']['video'] = $request->video;
-            $this->setOperationRelation($this->relations);
-        }
         return $this->storeModel(Dealer::class,$redirect);
     }
 
