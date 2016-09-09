@@ -40,20 +40,6 @@ class DealerCategoryApiController extends BaseNodeController
     }
 
     /**
-     * get detail
-     *
-     * @param integer $id
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function detail($id, Request $request)
-    {
-        return DealerCategory::where('id', $id)
-            ->select('type')
-            ->first();
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  ApiStoreRequest  $request

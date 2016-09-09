@@ -145,13 +145,6 @@ Route::group([
             'uses'              => config('laravel-dealer-module.controller.dealer_category_api').'@move'
         ]);
     }
-    // data table detail row
-    if (config('laravel-dealer-module.routes.api.dealer_category_detail')) {
-        Route::get('dealer-category/{id}/detail', [
-            'as'                => 'api.dealer_category.detail',
-            'uses'              => config('laravel-dealer-module.controller.dealer_category_api').'@detail'
-        ]);
-    }
     // dealer category resource
     if (config('laravel-dealer-module.routes.api.dealer_category')) {
         Route::resource(config('laravel-dealer-module.url.dealer_category'), config('laravel-dealer-module.controller.dealer_category_api'), [
