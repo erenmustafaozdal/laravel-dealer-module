@@ -64,7 +64,6 @@ return [
             'dealer_category'               => true,        // api dealer category resource route
             'dealer_category_models'        => true,        // api dealer category model post route
             'dealer_category_move'          => true,        // api dealer category move post route
-            'dealer_category_detail'        => true,        // api dealer category detail get route
             'dealer'                        => true,        // api dealer resource route
             'dealer_group'                  => true,        // api dealer group post route
             'dealer_detail'                 => true,        // api dealer detail get route

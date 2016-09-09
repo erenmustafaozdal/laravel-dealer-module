@@ -3,10 +3,8 @@
 namespace ErenMustafaOzdal\LaravelDealerModule;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Request;
 use Carbon\Carbon;
 use ErenMustafaOzdal\LaravelModulesBase\Traits\ModelDataTrait;
-use ErenMustafaOzdal\LaravelModulesBase\Repositories\FileRepository;
 
 class Dealer extends Model
 {
