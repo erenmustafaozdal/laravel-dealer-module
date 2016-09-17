@@ -127,6 +127,6 @@ class DealerCategoryApiController extends BaseNodeController
 
         $models = $models->get(['id','parent_id','lft','rgt','depth','name'])
             ->toHierarchy();
-        return LMBCollection::relationRender($models, 'children', '/', ['name']);
+        return LMBCollection::renderAncestorsAndSelf($models, '/', ['name_uc_first']);
     }
 }
