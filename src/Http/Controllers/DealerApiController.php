@@ -92,6 +92,8 @@ class DealerApiController extends BaseController
             'status'            => function($model) { return $model->is_publish; }
         ];
         $editColumns = [
+            'name'              => function($model) { return $model->name_uc_first; },
+            'category.name'     => function($model) { return $model->category->name_uc_first; },
             'created_at'        => function($model) { return $model->created_at_table; }
         ];
         $removeColumns = ['is_publish'];
@@ -112,9 +114,11 @@ class DealerApiController extends BaseController
             ->select(['id','category_id','name','province_id','county_id','district_id','neighborhood_id','postal_code_id','address','land_phone','mobile_phone','url','created_at','updated_at']);
 
         $editColumns = [
+            'name'          => function($model) { return $model->name_uc_first; },
             'created_at'    => function($model) { return $model->created_at_table; },
             'updated_at'    => function($model) { return $model->updated_at_table; },
             'address'       => function($model) { return $model->full_address; },
+            'category.name' => function($model) { return $model->category->name_uc_first; },
         ];
         $removeColumns = ['province_id','province','county_id','county','district_id','district','neighborhood_id','neighborhood','postal_code_id','postal_code'];
         return $this->getDatatables($dealer, [], $editColumns, $removeColumns);
