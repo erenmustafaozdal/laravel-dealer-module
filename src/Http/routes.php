@@ -7,7 +7,7 @@ ini_set('xdebug.max_nesting_level', 300);
 | Admin Routes
 |--------------------------------------------------------------------------
 */
-/*==========  Media Category Module  ==========*/
+/*==========  Dealer Category Module  ==========*/
 Route::group([
     'prefix' => config('laravel-dealer-module.url.admin_url_prefix'),
     'middleware' => config('laravel-dealer-module.url.middleware'),
@@ -46,7 +46,7 @@ Route::group([
     }
 });
 
-/*==========  Media Module  ==========*/
+/*==========  Dealer Module  ==========*/
 Route::group([
     'prefix'        => config('laravel-dealer-module.url.admin_url_prefix'),
     'middleware'    => config('laravel-dealer-module.url.middleware'),
@@ -124,7 +124,7 @@ Route::group([
 | Api Routes
 |--------------------------------------------------------------------------
 */
-/*==========  Media Category Module  ==========*/
+/*==========  Dealer Category Module  ==========*/
 Route::group([
     'prefix'        => 'api',
     'middleware'    => config('laravel-dealer-module.url.middleware'),
@@ -167,7 +167,7 @@ Route::group([
     }
 });
 
-/*==========  Media Module  ==========*/
+/*==========  Dealer Module  ==========*/
 Route::group([
     'prefix'        => 'api',
     'middleware'    => config('laravel-dealer-module.url.middleware'),

@@ -51,27 +51,16 @@ return [
     */
     'routes' => [
         'admin' => [
-            'dealer_category'               => true,        // admin dealer category resource route
-            'dealer'                        => true,        // admin dealer resource route
-            'dealer_publish'                => true,        // admin dealer publish get route
-            'dealer_notPublish'             => true,        // admin dealer not publish get route
-            'category_categories'           => true,        // admin category nested categories resource route
-            'category_dealers'              => true,        // admin category dealers resource route
-            'category_dealers_publish'      => true,        // admin category dealers publish get route
-            'category_dealers_notPublish'   => true         // admin category dealers not publish get route
+            'dealer_category'           => true,        // Is the route to be used categories admin
+            'dealer'                    => true,        // Is the route to be used dealers admin
+            'nested_sub_categories'     => true,        // Did subcategory nested categories admin route will be used
+            'sub_category_dealers'      => true,        // Did subcategory dealer admin route will be used
         ],
         'api' => [
-            'dealer_category'               => true,        // api dealer category resource route
-            'dealer_category_models'        => true,        // api dealer category model post route
-            'dealer_category_move'          => true,        // api dealer category move post route
-            'dealer'                        => true,        // api dealer resource route
-            'dealer_group'                  => true,        // api dealer group post route
-            'dealer_detail'                 => true,        // api dealer detail get route
-            'dealer_fastEdit'               => true,        // api dealer fast edit post route
-            'dealer_publish'                => true,        // api dealer publish post route
-            'dealer_notPublish'             => true,        // api dealer not publish post route
-            'category_categories_index'     => true,        // api category nested categories index get route
-            'category_dealers_index'        => true,        // api category dealers index get route
+            'dealer_category'           => true,        // Is the route to be used categories api
+            'dealer'                    => true,        // Is the route to be used dealers api
+            'nested_sub_categories'     => true,        // Did subcategory nested categories api route will be used
+            'sub_category_dealers'      => true,        // Did subcategory dealer api route will be used
         ]
     ],
 
@@ -99,39 +88,4 @@ return [
             'edit'      => 'laravel-modules-core::dealer.operation',             // get dealer edit view blade
         ]
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Models config
-    |--------------------------------------------------------------------------
-    |
-    | ## Options
-    |
-    | - default_img_path                : model default avatar or photo
-    |
-    | --- uploads                       : model uploads options
-    | - relation                        : file is in the relation table and what is relation type [false|hasOne|hasMany]
-    | - relation_model                  : relation model [\App\Model etc...]
-    | - type                            : file type [image,file]
-    | - column                          : file database column
-    | - path                            : file path
-    | - max_size                        : file allowed maximum size
-    | - max_file                        : maximum file count
-    | - aspect_ratio                    : if file is image; crop aspect ratio
-    | - mimes                           : file allowed mimes
-    | - thumbnails                      : if file is image; its thumbnails options
-    |
-    | NOT: Thumbnails fotoğrafları yüklenirken bakılır:
-    |       1. eğer post olarak x1, y1, x2, y2, width ve height değerleri gönderilmemiş ise bu değerlere göre
-    |       thumbnails ayarlarında belirtilen resimleri sistem içine kaydeder.
-    |       Yani bu değerler post edilmişse aşağıdaki değerleri yok sayar.
-    |       2. Eğer yukarıdaki ilgili değerler post edilmemişse, thumbnails ayarlarında belirtilen değerleri
-    |       dikkate alarak thumbnails oluşturur
-    |
-    |       Ölçü Belirtme:
-    |       1. İstenen resmin width ve height değerleri verilerek istenen net bir ölçüde resimler oluşturulabilir
-    |       2. Width değeri null verilerek, height değerine göre ölçeklenebilir
-    |       3. Height değeri null verilerek, width değerine göre ölçeklenebilir
-    |--------------------------------------------------------------------------
-    */
 ];
