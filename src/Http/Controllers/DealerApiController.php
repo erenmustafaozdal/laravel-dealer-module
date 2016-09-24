@@ -135,7 +135,7 @@ class DealerApiController extends BaseController
     {
         return Dealer::with(['category','province','county','district','neighborhood','postalCode'])
             ->where('id',$id)
-            ->first(['id','category_id','name','province_id','county_id','district_id','neighborhood_id','postal_code_id']);
+            ->first(['id','category_id','name','province_id','county_id','district_id','neighborhood_id','postal_code_id','is_publish']);
     }
 
     /**
