@@ -37,7 +37,7 @@ class StoreRequest extends Request
             'show_postal_code'  => 'required',
             'show_land_phone'   => 'required',
             'show_mobile_phone' => 'required',
-            'show_web'          => 'required',
+            'show_url'          => 'required',
             'parent'            => 'integer'
         ];
     }

@@ -59,7 +59,7 @@ class DealerCategory extends Node
      */
     public function dealers()
     {
-        return $this->hasMany('App\Dealer');
+        return $this->hasMany('App\Dealer','category_id');
     }
 
 
