@@ -84,6 +84,19 @@ class Dealer extends Model
         return $query;
     }
 
+    /**
+     * get detail data with all of the relation
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeGetDetail($query)
+    {
+        return $query->with([
+            'county',
+        ]);
+    }
+
 
 
 
@@ -202,6 +215,16 @@ class Dealer extends Model
     public function setPostalCodeIdAttribute($postal_code_id)
     {
         $this->attributes['postal_code_id'] =  $postal_code_id == '' || $postal_code_id == 0 ? null : $postal_code_id;
+    }
+
+    /**
+     * get zone
+     *
+     * @return string
+     */
+    public function getZoneAttribute()
+    {
+        return $this->county->county;
     }
 
     /**

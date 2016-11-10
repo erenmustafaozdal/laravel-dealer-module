@@ -93,7 +93,7 @@ class DealerApiController extends BaseController
         ];
         $editColumns = [
             'name'              => function($model) { return $model->name_uc_first; },
-            'category.name'     => function($model) { return $model->category->name_uc_first; },
+            'category.name'     => function($model) { return is_null($model->category) ? '' : $model->category->name_uc_first; },
             'created_at'        => function($model) { return $model->created_at_table; }
         ];
         $removeColumns = ['is_publish'];

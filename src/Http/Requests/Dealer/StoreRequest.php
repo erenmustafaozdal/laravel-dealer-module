@@ -28,6 +28,7 @@ class StoreRequest extends Request
     public function rules()
     {
         return [
+            'category_id'       => 'required',
             'name'              => 'required|max:255',
             'address'           => 'max:255',
             'province_id'       => 'required|integer|exists:provinces,id',

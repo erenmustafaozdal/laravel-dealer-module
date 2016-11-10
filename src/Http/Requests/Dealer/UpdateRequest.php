@@ -29,6 +29,7 @@ class UpdateRequest extends Request
     {
         $id = is_null($this->segment(5)) ? $this->segment(3) : $this->segment(5);
         return [
+            'category_id'       => 'required',
             'name'              => 'required|max:255',
             'address'           => 'max:255',
             'province_id'       => 'required|integer|exists:provinces,id',

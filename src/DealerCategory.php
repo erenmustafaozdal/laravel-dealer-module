@@ -44,6 +44,22 @@ class DealerCategory extends Node
     |--------------------------------------------------------------------------
     */
 
+    /**
+     * get detail data with all of the relation
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeGetDealerWithDetail($query)
+    {
+        return $query->with([
+            'dealers' => function($query)
+            {
+                return $query->getDetail()->published()->orderBy('id','desc');
+            }
+        ]);
+    }
+
 
 
 
