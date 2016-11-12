@@ -38,7 +38,7 @@ class StoreRequest extends Request
             'postal_code_id'    => 'integer|exists:postal_codes,id',
             'land_phone'        => 'max:16|unique:dealers,land_phone',
             'mobile_phone'      => 'max:16|unique:dealers,land_phone',
-            'web'               => 'max:255|active_url'
+            'url'               => 'max:255|active_url'
         ];
     }
 }
