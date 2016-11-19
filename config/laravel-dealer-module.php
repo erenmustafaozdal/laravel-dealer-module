@@ -88,4 +88,83 @@ return [
             'edit'      => 'laravel-modules-core::dealer.operation',             // get dealer edit view blade
         ]
     ],
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Permissions
+    |--------------------------------------------------------------------------
+    */
+    'permissions' => [
+        'dealer_category' => [
+            'title'                 => 'Bayi Kategorileri',
+            'routes' => [
+                'admin.dealer_category.index' => [
+                    'title'         => 'Veri Tablosu',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini veri tablosunda listeleyebilir.',
+                ],
+                'admin.dealer_category.create' => [
+                    'title'         => 'Ekleme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorisi ekleyebilir',
+                ],
+                'admin.dealer_category.show' => [
+                    'title'         => 'Gösterme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorisi bilgilerini görüntüleyebilir',
+                ],
+                'admin.dealer_category.edit' => [
+                    'title'         => 'Düzenleme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorisini düzenleyebilir',
+                ],
+                'admin.dealer_category.destroy' => [
+                    'title'         => 'Silme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorisini silebilir',
+                ],
+                'api.dealer_category.models' => [
+                    'title'         => 'Rolleri Listeleme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini bazı seçim kutularında listeleyebilir',
+                ],
+                'api.dealer_category.move' => [
+                    'title'         => 'Taşıma',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini taşıyarak yerini değiştirebilir.',
+                ],
+            ],
+        ],
+        'dealer' => [
+            'title'                 => 'Bayiler',
+            'routes' => [
+                'admin.dealer.index' => [
+                    'title'         => 'Veri Tablosu',
+                    'description'   => 'Bu izne sahip olanlar bayileri veri tablosunda listeleyebilir.',
+                ],
+                'admin.dealer.create' => [
+                    'title'         => 'Ekleme',
+                    'description'   => 'Bu izne sahip olanlar bayi ekleyebilir',
+                ],
+                'admin.dealer.show' => [
+                    'title'         => 'Gösterme',
+                    'description'   => 'Bu izne sahip olanlar bayi bilgilerini görüntüleyebilir',
+                ],
+                'admin.dealer.edit' => [
+                    'title'         => 'Düzenleme',
+                    'description'   => 'Bu izne sahip olanlar bayi bilgilerini düzenleyebilir',
+                ],
+                'admin.dealer.destroy' => [
+                    'title'         => 'Silme',
+                    'description'   => 'Bu izne sahip olanlar bayiyi silebilir',
+                ],
+                'api.dealer.group' => [
+                    'title'         => 'Toplu İşlem',
+                    'description'   => 'Bu izne sahip olanlar bayiler veri tablosunda toplu işlem yapabilir',
+                ],
+                'api.dealer.detail' => [
+                    'title'         => 'Detaylar',
+                    'description'   => 'Bu izne sahip olanlar bayiler tablosunda detayını görebilir.',
+                ]
+            ],
+        ]
+    ],
 ];
