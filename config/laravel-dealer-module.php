@@ -105,9 +105,13 @@ return [
             'routes' => [
                 'admin.dealer_category.index' => [
                     'title'         => 'Veri Tablosu',
-                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini veri tablosunda listeleyebilir.',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorileri veri tablosu sayfasına gidebilir.',
                 ],
                 'admin.dealer_category.create' => [
+                    'title'         => 'Ekleme Sayfası',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorisi ekleme sayfasına gidebilir',
+                ],
+                'admin.dealer_category.store' => [
                     'title'         => 'Ekleme',
                     'description'   => 'Bu izne sahip olanlar bayi kategorisi ekleyebilir',
                 ],
@@ -116,6 +120,10 @@ return [
                     'description'   => 'Bu izne sahip olanlar bayi kategorisi bilgilerini görüntüleyebilir',
                 ],
                 'admin.dealer_category.edit' => [
+                    'title'         => 'Düzenleme Sayfası',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorisini düzenleme sayfasına gidebilir',
+                ],
+                'admin.dealer_category.update' => [
                     'title'         => 'Düzenleme',
                     'description'   => 'Bu izne sahip olanlar bayi kategorisini düzenleyebilir',
                 ],
@@ -123,8 +131,24 @@ return [
                     'title'         => 'Silme',
                     'description'   => 'Bu izne sahip olanlar bayi kategorisini silebilir',
                 ],
+                'api.dealer_category.index' => [
+                    'title'         => 'Listeleme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini veri tablosunda listeleyebilir',
+                ],
+                'api.dealer_category.store' => [
+                    'title'         => 'Hızlı Ekleme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini veri tablosunda hızlı ekleyebilir.',
+                ],
+                'api.dealer_category.update' => [
+                    'title'         => 'Hızlı Düzenleme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini veri tablosunda hızlı düzenleyebilir.',
+                ],
+                'api.dealer_category.destroy' => [
+                    'title'         => 'Silme',
+                    'description'   => 'Bu izne sahip olanlar bayi kategorilerini veri tablosunda silebilir',
+                ],
                 'api.dealer_category.models' => [
-                    'title'         => 'Rolleri Listeleme',
+                    'title'         => 'Seçim İçin Listeleme',
                     'description'   => 'Bu izne sahip olanlar bayi kategorilerini bazı seçim kutularında listeleyebilir',
                 ],
                 'api.dealer_category.move' => [
@@ -138,9 +162,13 @@ return [
             'routes' => [
                 'admin.dealer.index' => [
                     'title'         => 'Veri Tablosu',
-                    'description'   => 'Bu izne sahip olanlar bayileri veri tablosunda listeleyebilir.',
+                    'description'   => 'Bu izne sahip olanlar bayiler veri tablosu sayfasına gidebilir.',
                 ],
                 'admin.dealer.create' => [
+                    'title'         => 'Ekleme Sayfası',
+                    'description'   => 'Bu izne sahip olanlar bayi ekleme sayfasına gidebilir',
+                ],
+                'admin.dealer.store' => [
                     'title'         => 'Ekleme',
                     'description'   => 'Bu izne sahip olanlar bayi ekleyebilir',
                 ],
@@ -149,12 +177,40 @@ return [
                     'description'   => 'Bu izne sahip olanlar bayi bilgilerini görüntüleyebilir',
                 ],
                 'admin.dealer.edit' => [
+                    'title'         => 'Düzenleme Sayfası',
+                    'description'   => 'Bu izne sahip olanlar bayiyi düzenleme sayfasına gidebilir',
+                ],
+                'admin.dealer.update' => [
                     'title'         => 'Düzenleme',
-                    'description'   => 'Bu izne sahip olanlar bayi bilgilerini düzenleyebilir',
+                    'description'   => 'Bu izne sahip olanlar bayiyi düzenleyebilir',
                 ],
                 'admin.dealer.destroy' => [
                     'title'         => 'Silme',
                     'description'   => 'Bu izne sahip olanlar bayiyi silebilir',
+                ],
+                'admin.dealer.publish' => [
+                    'title'         => 'Yayınlama',
+                    'description'   => 'Bu izne sahip olanlar bayiyi yayınlayabilir',
+                ],
+                'admin.dealer.notPublish' => [
+                    'title'         => 'Yayından Kaldırma',
+                    'description'   => 'Bu izne sahip olanlar bayiyi yayından kaldırabilir',
+                ],
+                'api.dealer.index' => [
+                    'title'         => 'Listeleme',
+                    'description'   => 'Bu izne sahip olanlar bayileri veri tablosunda listeleyebilir',
+                ],
+                'api.dealer.store' => [
+                    'title'         => 'Hızlı Ekleme',
+                    'description'   => 'Bu izne sahip olanlar bayileri veri tablosunda hızlı ekleyebilir.',
+                ],
+                'api.dealer.update' => [
+                    'title'         => 'Hızlı Düzenleme',
+                    'description'   => 'Bu izne sahip olanlar bayileri veri tablosunda hızlı düzenleyebilir.',
+                ],
+                'api.dealer.destroy' => [
+                    'title'         => 'Silme',
+                    'description'   => 'Bu izne sahip olanlar bayileri veri tablosunda silebilir',
                 ],
                 'api.dealer.group' => [
                     'title'         => 'Toplu İşlem',
@@ -163,7 +219,19 @@ return [
                 'api.dealer.detail' => [
                     'title'         => 'Detaylar',
                     'description'   => 'Bu izne sahip olanlar bayiler tablosunda detayını görebilir.',
-                ]
+                ],
+                'api.dealer.fastEdit' => [
+                    'title'         => 'Hızlı Düzenleme Bilgileri',
+                    'description'   => 'Bu izne sahip olanlar bayiler tablosunda hızlı düzenleme amacıyla bilgileri getirebilir.',
+                ],
+                'api.dealer.publish' => [
+                    'title'         => 'Hızlı Yayınlama',
+                    'description'   => 'Bu izne sahip olanlar bayiler tablosunda bayiyi yayınlanyabilir.',
+                ],
+                'api.dealer.notPublish' => [
+                    'title'         => 'Hızlı Yayından Kaldırma',
+                    'description'   => 'Bu izne sahip olanlar bayiler tablosunda bayiyi yayından kaldırabilir.',
+                ],
             ],
         ]
     ],
