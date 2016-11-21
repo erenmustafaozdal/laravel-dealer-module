@@ -125,8 +125,7 @@ class DealerCategoryApiController extends BaseNodeController
             $models = DealerCategory::where('name', 'like', "%{$request->input('query')}%");
         }
 
-        $models = $models->get(['id','parent_id','lft','rgt','depth','name'])
-            ->toHierarchy();
+        $models = $models->get(['id','parent_id','lft','rgt','depth','name']);
         return LMBCollection::renderAncestorsAndSelf($models, '/', ['name_uc_first']);
     }
 }
