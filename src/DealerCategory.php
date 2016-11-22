@@ -52,7 +52,7 @@ class DealerCategory extends Node
      */
     public function scopeGetDealerWithDetail($query)
     {
-        return $query->with([
+        return $query->hasPublishedElement('dealers')->with([
             'dealers' => function($query)
             {
                 return $query->getDetail()->published()->orderBy('id','desc');
