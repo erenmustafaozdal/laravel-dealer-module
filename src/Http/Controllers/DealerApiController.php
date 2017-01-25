@@ -226,9 +226,23 @@ class DealerApiController extends BaseController
      */
     public function group(Request $request)
     {
+        $this->clearCache();
         if ( $this->groupAlias(Dealer::class) ) {
             return response()->json(['result' => 'success']);
         }
         return response()->json(['result' => 'error']);
+    }
+
+    /**
+     * clear cache
+     *
+     * @return void
+     */
+    private function clearCache()
+    {
+        foreach(\App\DealerCategory::all(['id'])->keyBy('id')->keys() as $id) {
+            \Cache::forget(implode('_',['dealer_categories','with_dealers',$id]));
+        }
+        \Cache::forget(implode('_',['dealer_categories','with_dealers_all']));
     }
 }

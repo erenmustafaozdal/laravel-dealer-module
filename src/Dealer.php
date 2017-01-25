@@ -263,4 +263,50 @@ class Dealer extends Model
         }
         return $address;
     }
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Model Events
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * model boot method
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        /**
+         * model saved method
+         *
+         * @param $model
+         */
+        parent::saved(function($model)
+        {
+            // cache forget
+            foreach(\App\DealerCategory::all(['id'])->keyBy('id')->keys() as $id) {
+                \Cache::forget(implode('_',['dealer_categories','with_dealers',$id]));
+            }
+            \Cache::forget(implode('_',['dealer_categories','with_dealers_all']));
+        });
+
+        /**
+         * model deleted method
+         *
+         * @param $model
+         */
+        parent::deleted(function($model)
+        {
+            // cache forget
+            foreach(\App\DealerCategory::all(['id'])->keyBy('id')->keys() as $id) {
+                \Cache::forget(implode('_',['dealer_categories','with_dealers',$id]));
+            }
+            \Cache::forget(implode('_',['dealer_categories','with_dealers_all']));
+        });
+    }
 }

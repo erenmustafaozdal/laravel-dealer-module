@@ -87,4 +87,61 @@ class DealerCategory extends Node
     | Model Set and Get Attributes
     |--------------------------------------------------------------------------
     */
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Model Events
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * model boot method
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        /**
+         * model saved method
+         *
+         * @param $model
+         */
+        parent::saved(function($model)
+        {
+            // cache forget
+            \Cache::forget(implode('_',['dealer_categories',$model->id]));
+            \Cache::forget(implode('_',['dealer_categories','with_dealers',$model->id]));
+            \Cache::forget(implode('_',['dealer_categories','with_dealers_all']));
+        });
+
+        /**
+         * model moved method
+         *
+         * @param $model
+         */
+        parent::moved(function($model)
+        {
+            // cache forget
+            \Cache::forget(implode('_',['dealer_categories',$model->id]));
+            \Cache::forget(implode('_',['dealer_categories','with_dealers',$model->id]));
+            \Cache::forget(implode('_',['dealer_categories','with_dealers_all']));
+        });
+
+        /**
+         * model deleted method
+         *
+         * @param $model
+         */
+        parent::deleted(function($model)
+        {
+            // cache forget
+            \Cache::forget(implode('_',['dealer_categories',$model->id]));
+            \Cache::forget(implode('_',['dealer_categories','with_dealers',$model->id]));
+            \Cache::forget(implode('_',['dealer_categories','with_dealers_all']));
+        });
+    }
 }
